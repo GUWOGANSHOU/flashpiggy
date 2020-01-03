@@ -1,0 +1,106 @@
+/*
+  此文件是由模板文件 ".dtpl/component/$rawModuleName.$style.dtpl" 生成的，你可以自行修改模板
+
+  注意：文件为空，编译时不会生成新文件
+*/
+
+@import './progress.scss';
+
+.whole {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: url(../../images/mission-list-bg.png);
+  overflow: auto;
+}
+.head {
+  width: 100%;
+  font-size: 42px;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 2px white solid;
+}
+.headtext {
+  line-height: 82px;
+  color: white;
+}
+.tipbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.tipbody {
+  margin-top: 51px;
+  width: 50%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ratenum {
+  font-size: 22px;
+  color: white;
+}
+.ratewancheng {
+  margin-left: 25px;
+  font-size: 22px;
+  color: white;
+}
+.tiphenxian {
+  height: 2px;
+  width: 172px;
+  background: #4f7948;
+}
+.tipPTS {
+  color: #4f7948;
+  font-size: 32px;
+}
+.tipbutton {
+  margin-top: 7px;
+  width: 172px;
+  height: 63px;
+  border-radius: 15px;
+  background: #4f7948;
+  color: white;
+  text-align: center;
+  line-height: 63px;
+}
+/* 成就详情模态框 */
+.achi_container {
+  position: absolute;
+  background-color: white;
+  height: 800px;
+  width: 90%;
+  margin: 5%;
+  border-radius: 30px;
+  z-index: 300;
+}
+.title {
+  color: #4f7948;
+  text-align: center;
+  font-size: 45px;
+  margin-top: 60px;
+}
+.sub_title {
+  color: #8a8a8a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pos_control .tipbody {
+  margin: 0 auto;
+  zoom: 1.2;
+  color: #000;
+}
+/* 黑色遮罩 */
+.whole_black {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 280;
+}

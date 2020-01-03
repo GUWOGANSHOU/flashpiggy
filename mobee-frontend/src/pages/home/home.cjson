@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/page.json",
+  "usingComponents": {
+    "tab-item": "components/tab-item/tab-item",
+    "mission": "components/mission/mission",
+    "massage":"components/massage/massage",
+    "exchange":"components/exchange/exchange",
+    "exchangeuse":"components/exchangeuse/exchangeuse",
+    "achievement":"components/achievement/achievement"
+  }
+}

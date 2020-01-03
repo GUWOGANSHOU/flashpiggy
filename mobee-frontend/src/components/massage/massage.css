@@ -1,0 +1,239 @@
+/*
+  此文件是由模板文件 ".dtpl/component/$rawModuleName.$style.dtpl" 生成的，你可以自行修改模板
+
+  注意：文件为空，编译时不会生成新文件
+*/
+.showUse {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.whole {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.navigate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  flex: none;
+}
+.barright {
+  display: flex;
+  flex-direction: row;
+}
+.head {
+  height: 127px;
+  width: 100%;
+  /* background: #17dd98; */
+  /* background: dodgerblue;*/
+  background: linear-gradient(left, #06c4d4, #17dd98);
+  display: flex;
+  flex: none;
+}
+.box1_left {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  margin-left: 24px;
+  margin-top: 12px;
+  background: white;
+  float: left;
+}
+.box1_right {
+  padding-left: 21px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+.navigate {
+  display: flex;
+  color: #4f7948;
+  font-size: 24px;
+  height: 78px;
+  justify-content: space-between;
+  align-items: center;
+}
+.tapstate {
+  border-bottom: solid #4f7948 9px;
+  width: 50%;
+  height: 78px;
+  text-align: center;
+  line-height: 78px;
+}
+.nontapstate {
+  border-bottom: solid #ffffff 9px;
+  width: 50%;
+  height: 78px;
+  text-align: center;
+  line-height: 78px;
+}
+.allgift {
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: auto;
+  background-color: #ebe9ea;
+}
+/* 任务列表条 */
+.giftbar_right{
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  color: #3c3c3c;
+}
+.tag{
+  color: #8a8a8a;
+  margin-left: 100px;
+  margin-top: 9px;
+}
+.busiName {
+  color: #4f7948;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+.giftbar {
+  height: 180px;
+  width: 95%;
+  background-color: white;
+  /* background: linear-gradient(left, #06c4d4, #17dd98); */
+  /* background: url('../../images/coffee.jpg'); */
+  background-size: 700px 250px;
+  margin: 2.5%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.giftbar .barleft {
+  margin-left: 41px;
+  margin-top: 45px;
+  color: white;
+}
+.giftbar .barright {
+  height: 60px;
+  width: 215px;
+  /* background: rgba(255, 255, 255, 0.8); */
+  border-radius: 50rpx 0  0  50rpx;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e0e5df;
+}
+.barright .PTS {
+  margin-left: 31px;
+  font-size: 28px;
+  color: #4f7948;
+}
+.barright .fordetail {
+  margin-right: 9px;
+  margin-bottom: 6px;
+  font-size: 40px;
+  color: #4f7948;
+}
+.giftbar_left .touxiang {
+  margin-left: 40px;
+  background: url('../../images/Starbucks.png');
+  height: 89px;
+  width: 89px;
+  border-radius: 45px;
+  background-size: contain;
+}
+.giftbar_left {
+  margin-top: 20px;
+  height: 142px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.giftbar_center {
+  margin-left: 27px;
+  margin-top: 30px;
+  width: 50%;
+}
+.giftbar_center .giftbar_center_up {
+  font-size: 35px;
+  color: #3c3c3c;
+}
+.giftbar_center .giftbar_center_down {
+  font-size: 25px;
+  color: #3c3c3c;
+  margin-top: 10px;
+}
+.money {
+  font-size: 28px;
+}
+.giftname {
+  margin-top: 12px;
+  font-size: 28px;
+}
+.remain {
+  margin-top: 45px;
+  font-size: 26px;
+}
+.giftbar_used {
+  display: flex;
+  flex-direction: row;
+  height: 142px;
+  width: 712px;
+  background: #e0e5df;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.giftbar_right_used {
+  display: flex;
+  align-items: center;
+  margin-left: 149px;
+  font-size: 22px;
+  color: #3c3c3c;
+}
+.used-image {
+  background: url('../../images/used.svg');
+  width: 96px;
+  height: 96px;
+  background-size: 96px 96px;
+}
+
+
+/* 积分详情 */
+.myselfgift {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  background-color: #ebe9ea;
+  height: 100%;
+  padding-top: 10rpx;
+}
+.pointsbar{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  color: #3c3c3c;
+  font-size: 25px;
+  border-bottom: #ebe9ea solid 2px;
+}
+.useicon{
+  background: url("../../images/兑换优惠券.png") no-repeat;
+}
+.rewardicon{
+  background: url("../../images/奖励.png") no-repeat;
+}
+.pointsbar_left{
+  width: 60px;
+  height: 60px;
+  background-position: 0 0;
+  background-size: contain;
+}

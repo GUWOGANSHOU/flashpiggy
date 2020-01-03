@@ -1,0 +1,205 @@
+/*
+  此文件是由模板文件 ".dtpl/component/$rawModuleName.$style.dtpl" 生成的，你可以自行修改模板
+
+  注意：文件为空，编译时不会生成新文件
+*/
+.showUse {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.whole {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.navigate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  flex: none;
+}
+.giftbar {
+  display: flex;
+  flex-direction: row;
+}
+.barright {
+  display: flex;
+  flex-direction: row;
+}
+
+.head {
+  height: 127px;
+  width: 100%;
+  /* background: #17dd98; */
+  /* background: dodgerblue;*/
+  background: linear-gradient(left, #06c4d4, #17dd98);
+  display: flex;
+  flex: none;
+}
+.box1_left {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  margin-left: 24px;
+  margin-top: 12px;
+  background: white;
+  float: left;
+}
+.box1_right {
+  padding-left: 21px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+.navigate {
+  display: flex;
+  color: #4f7948;
+  font-size: 24px;
+  height: 78px;
+  justify-content: space-between;
+  align-items: center;
+}
+.tapstate {
+  border-bottom: solid #4f7948 9px;
+  width: 50%;
+  height: 78px;
+  text-align: center;
+  line-height: 78px;
+}
+.nontapstate {
+  border-bottom: solid #ffffff 9px;
+  width: 50%;
+  height: 78px;
+  text-align: center;
+  line-height: 78px;
+}
+.allgift {
+  padding: 0 20px;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.giftbar {
+  height: 230px;
+  width: 100%;
+  background: url('../../images/coffee.jpg') no-repeat;
+  background-size: 700px 250px;
+  margin: 20px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.giftbar .barleft {
+  margin-left: 41px;
+  margin-top: 45px;
+  color: white;
+}
+.money {
+  font-size: 28px;
+}
+.giftname {
+  margin-top: 12px;
+  font-size: 28px;
+}
+.remain {
+  margin-top: 45px;
+  font-size: 26px;
+}
+.giftbar .barright {
+  height: 78px;
+  width: 381px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50px 0  0  50px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.barright .PTS {
+  margin-left: 31px;
+  font-size: 40px;
+  color: #4f7948;
+}
+.barright .fordetail {
+  margin-right: 29px;
+  font-size: 40px;
+  color: #4f7948;
+}
+.myselfgift {
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.giftbar2 {
+  display: flex;
+  flex-direction: row;
+  height: 142px;
+  width: 100%;
+  background: linear-gradient(left, #06c4d4, #17dd98);
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.giftbar2_left .touxiang {
+  margin-left: 25px;
+  background: url('../../images/Starbucks.png');
+  height: 89px;
+  width: 89px;
+  border-radius: 45px;
+  background-size: contain;
+}
+.giftbar2_left {
+  height: 142px;
+  display: flex;
+  align-items: center;
+}
+.giftbar2_center {
+  margin-left: 27px;
+  margin-top: 27px;
+  width: 40%;
+}
+.giftbar2_center .giftbar2_center_up {
+  font-size: 48px;
+  color: white;
+}
+.giftbar2_center .giftbar2_center_down {
+  font-size: 28px;
+  color: white;
+  margin-top: -6px;
+}
+.giftbar2_right {
+  margin-top: 80px;
+  margin-right: 29px;
+  font-size: 22px;
+  color: #3c3c3c;
+}
+.giftbar2_used {
+  display: flex;
+  flex-direction: row;
+  height: 142px;
+  width: 712px;
+  background: #e0e5df;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.giftbar2_right_used {
+  display: flex;
+  align-items: center;
+  margin-left: 149px;
+  font-size: 22px;
+  color: #3c3c3c;
+}
+.used-image {
+  background: url('../../images/used.svg');
+  width: 96px;
+  height: 96px;
+  background-size: 96px 96px;
+}

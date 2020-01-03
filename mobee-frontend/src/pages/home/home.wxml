@@ -1,0 +1,9 @@
+<view class="container">
+  <mission class="body {{activeTab !== TABS.MISSION ? 'hide' : ''}}" userInfo.sync="{{userInfo}}" />
+  <achievement class="body {{activeTab !== TABS.ACHIEVEMENT ? 'hide' : ''}}">成就</achievement>
+  <exchange class="body {{activeTab !== TABS.EXCHANGE ? 'hide' : ''}}">兑换</exchange>
+  <massage class="body {{activeTab !== TABS.MSG ? 'hide' : ''}}">消息</massage>
+  <view class="tab">
+    <tab-item wx:for="{{TabsArray}}" wx:key="item" bind:tap="setActiveTap" data-key="{{item}}" title="{{tabTitle[item]}}" image="{{imageList[item]}}" isActive.sync="{{activeTab === item}}" />
+  </view>
+</view>

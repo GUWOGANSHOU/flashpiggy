@@ -1,0 +1,14 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true,
+    "semicolon": false,
+    "member-access": false,
+    "no-console": false,
+    "interface-over-type-literal": false,
+    "no-empty": false,
+    "object-literal-sort-keys": false
+  },
+  "jsRules": {}
+}

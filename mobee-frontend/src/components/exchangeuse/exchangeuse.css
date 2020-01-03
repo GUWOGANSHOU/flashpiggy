@@ -1,0 +1,205 @@
+/*
+  此文件是由模板文件 ".dtpl/component/$rawModuleName.$style.dtpl" 生成的，你可以自行修改模板
+
+  注意：文件为空，编译时不会生成新文件
+*/
+.whole {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background: linear-gradient(left, #06c4d4, #17dd98);
+}
+.deadTime {
+  color: #17dd98;
+}
+.prerow {
+  height: 63px;
+  width: 34px;
+  background-size: cover;
+  margin: 20px;
+  zoom: 0.5;
+  background: url('../../images/left-arrow.png') no-repeat;
+}
+.whitebg {
+  background-color: white;
+  width: 95%;
+  height: 95%;
+  margin: 2.5%;
+  border-radius: 12px;
+}
+.myselfgift {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.giftbar2 {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 691px;
+  background: url('../../images/giftbarbg.png') no-repeat;
+  background-position: 0 0;
+  background-size: 100%;
+}
+.giftbar2_left .touxiang {
+  margin-left: 150px;
+  background: url('../../images/Starbucks.png');
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  background-size: contain;
+}
+.giftbar2_left {
+  display: flex;
+  align-items: center;
+}
+.giftbar2_center {
+  margin-left: 36px;
+  margin-top: 95px;
+}
+.giftbar2_center .giftbar2_center_up {
+  font-size: 55px;
+  color: white;
+}
+.giftbar2_center .giftbar2_center_down {
+  font-size: 36px;
+  color: white;
+}
+/* .giftbar2_right{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+ .giftbar2_right_down{
+  margin-top: 200px;
+  margin-right: 29px;
+  font-size: 22px;
+  color: #3c3c3c;
+  width: 100%
+  
+} */
+.myIcon {
+  width: 60px;
+  height: 60px;
+}
+.firstDetail,
+.secondDetail {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mynotice {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.QRtab text,
+.QRshop text {
+  font-size: 21px;
+  line-height: 1.5;
+}
+.QRshop text {
+  margin-right: 30px;
+}
+.timeText,
+.noteText {
+  display: flex;
+  flex-direction: column;
+  font-size: 21px;
+  width: 75%;
+  line-height: 1.5;
+}
+.QRtab,
+.QRshop,
+.QRtime,
+.QRnote {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tabIcon {
+  background: url('../../images/说明.png') no-repeat 0 0;
+  background-size: contain;
+}
+.shopIcon {
+  background: url('../../images/商店.png') no-repeat 0 0;
+  background-size: contain;
+}
+.timeIcon {
+  background: url('../../images/时间.png') no-repeat 0 0;
+  background-size: contain;
+}
+.noteIcon {
+  background: url('../../images/优惠.png') no-repeat 0 0;
+  background-size: contain;
+}
+.QRcode {
+  width: 100%;
+  height: 315px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}
+.QRleft {
+  background: url('../../images/left.png') no-repeat;
+  background-size: 100%;
+  background-position-y: 136px;
+  width: 32px;
+  height: 300px;
+}
+.leftnote {
+  display: inline-block;
+  margin-top: 183px;
+}
+.rightnote {
+  display: inline-block;
+  margin-top: 20px;
+}
+.QRcodeimg {
+  background: url('../../images/QRcode.jpg') no-repeat;
+  background-size: 90%;
+  background-color: white;
+  border: #fff5ee 1px solid;
+  background-position: 10%;
+  background-position-x: 50%;
+  width: 300px;
+  height: 300px;
+}
+.QRright {
+  background: url('../../images/right.png') no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 300px;
+}
+.hengxian {
+  color: #ebe9ea;
+}
+.deadline {
+  display: flex;
+  justify-content: space-around;
+}
+.QRdetail {
+  margin-top: 25px;
+  padding: 15px;
+  height: 250px;
+  background-color: #ebe9ea;
+  margin-bottom: 45px;
+}
+.GetGift {
+  height: 80px;
+  width: 712px;
+  border-radius: 10px;
+  background: dodgerblue;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80px;
+}

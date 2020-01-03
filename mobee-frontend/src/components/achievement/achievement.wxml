@@ -1,0 +1,63 @@
+<!-- 此文件是由模板文件 ".dtpl/component/$rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件 -->
+<view class="whole test">
+  <!-- 成就详情模态框 -->
+  <view wx:if="{{showAchiDetail}}">
+    <view class="achi_container">
+      <view class="title">{{activeAchievement.lable}}</view>
+      <view class="sub_title">{{activeAchievement.introduce}}</view>
+      <view class="pos_control">
+        <view class="tipbody">
+          <view class="pie-wrapper set-size">
+            <view class="label">
+              <image src="{{activeAchievement.url}}" />
+            </view>
+            <view class="shadow">
+              <view class="left-side half-circle"></view>
+              <view class="right-side half-circle"></view>
+            </view>
+            <view class="pie {{activeAchievement.missionSum / activeAchievement.goalSum > 0.5 ? 'over-50' : ''}}">
+              <view class="left-side half-circle" style="transform: rotate({{activeAchievement.missionSum / activeAchievement.goalSum * 100 * 2.7}}deg);"></view>
+              <view class="right-side half-circle"></view>
+            </view>
+          </view>
+          <view class="tipPTS">{{activeAchievement.bonusPoints}}PTS</view>
+          <view class="tipbutton" bind:tap="onExchange">兑换</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 黑色遮罩 -->
+  <view wx:if="{{showBlack}}">
+    <view class="whole_black" bind:tap="closeDetail"></view>
+  </view>
+  <view class="head">
+    <view class="headtext">成就兑换</view>
+  </view>
+  <view class="charts-container">
+    <view class="tipbody" wx:for="{{allAchievements}}" wx:key="item.achievementCode">
+      <view class="pie-wrapper set-size">
+        <view class="label">
+          <image src="{{item.url}}" />
+        </view>
+        <view class="shadow">
+          <view class="left-side half-circle"></view>
+          <view class="right-side half-circle"></view>
+        </view>
+        <view class="pie {{item.missionSum / item.goalSum > 0.5 ? 'over-50' : ''}}">
+          <view class="left-side half-circle" style="transform: rotate({{item.missionSum / item.goalSum * 100 * 2.7}}deg);"></view>
+          <view class="right-side half-circle"></view>
+        </view>
+      </view>
+      <view class="tiprate_text">
+        <text class="ratenum">{{item.missionSum}}/{{item.goalSum}}</text>
+        <text class="ratewancheng">完成</text>
+      </view>
+      <view class="tiphenxian"></view>
+      <view class="tipPTS">{{item.bonusPoints}}PTS</view>
+      <view class="tipbutton" data-id="{{item.achievementCode}}" bind:tap="showDetail">兑换</view>
+    </view>
+  </view>
+</view>

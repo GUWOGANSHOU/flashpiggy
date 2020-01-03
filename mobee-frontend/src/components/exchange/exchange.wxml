@@ -1,0 +1,60 @@
+<!-- 此文件是由模板文件 ".dtpl/component/$rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件 -->
+<view class="whole">
+  <useGift wx:if="{{showUse}}" show.sync="{{showUse}}" useSelectGift="{{useSelectGift}}" class="showUse" />
+  <giftDetail wx:if="{{giftdetail}}" show.sync="{{giftdetail}}" selectGift="{{selectGift}}" class="showUse" />
+  <view class='head'>
+    <image class='box1_left' src="{{userInfo.avatarUrl}}" />
+    <view class="box1_right">
+      <view class='text name'>{{userInfo.nickName}}</view>
+      <view class='text massagetip'>3000积分</view>
+    </view>
+  </view>
+  <view class="navigate">
+    <view class="{{giftBar.ALL == activeGiftBar ? 'tapstate' : 'nontapstate'}}" data-key="{{giftBar.ALL}}" bind:tap="switchGiftBar">
+      所有福利
+    </view>
+    <view class="{{giftBar.MY == activeGiftBar ? 'tapstate' : 'nontapstate'}}" data-key="{{giftBar.MY}}" bind:tap="switchGiftBar">
+      我的福利
+    </view>
+  </view>
+  <view class="allgift" wx:if="{{giftBar.ALL == activeGiftBar}}">
+    <view class="giftbar" wx:for="{{allgifts}}" wx:key="item.goodCode" data-id="{{item.goodCode}}" bind:tap="giftbarHandle">
+      <view class="barleft">
+        <view class="money">￥{{item.extendI1}}</view>
+        <view class="giftname">{{item.name}}</view>
+        <view class="remain">剩余{{item.num}}份</view>
+      </view>
+      <view class="barright">
+        <view class="PTS">{{item.points}}PTS</view>
+        <view class="fordetail">></view>
+      </view>
+    </view>
+  </view>
+  <view class="myselfgift" wx:if="{{giftBar.MY == activeGiftBar}}">
+    <view class="giftbar2" wx:for="{{validGifts}}" wx:key="item.goodCode" data-id="{{item.goodCode}}" bind:tap="giftbarHandle2">
+      <view class="giftbar2_left">
+        <view class="touxiang"></view>
+      </view>
+      <view class="giftbar2_center">
+        <view class="giftbar2_center_up">￥{{item.extendI1}}</view>
+        <view class="giftbar2_center_down">{{item.name}}</view>
+      </view>
+      <view class="giftbar2_right">{{item.endTime}}前有效</view>
+    </view>
+    <view class="giftbar2_used" wx:for="{{usedgifts}}" wx:key="item.goodCode" data-id="{{item.goodCode}}">
+      <view class="giftbar2_left">
+        <view class="touxiang"></view>
+      </view>
+      <view class="giftbar2_center">
+        <view class="giftbar2_center_up">￥{{item.extendI1}}</view>
+        <view class="giftbar2_center_down">{{item.name}}</view>
+      </view>
+      <view class="giftbar2_right_used">
+        <view class="used-image"></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+{
+  "name": "mobee-frontend",
+  "version": "1.0.0",
+  "description": "A wonderful miniapp application",
+  "scripts": {
+    "test": "echo 0",
+    "lint": "tslint -p .",
+    "clear": "minapp clear dist",
+    "dev": "minapp dev",
+    "build": "minapp build --publicPath https://picture.gaocimi.cn/"
+  },
+  "private": true,
+  "author": "huihuimoe<0w0@loli.pet>",
+  "license": "MIT",
+  "dependencies": {
+    "@minapp/core": "^2.0.0",
+    "@minapp/mobx": "^2.0.0",
+    "@minapp/wx": "latest",
+    "mobx": "3",
+    "tslib": "^1.9.0"
+  },
+  "devDependencies": {
+    "@minapp/cli": "*",
+    "@types/node": "^10.12.18",
+    "husky": "^2.3.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.17.0",
+    "sass-loader": "^7.1.0",
+    "ts-lint": "^4.5.1",
+    "ts-loader": "^5.3.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx tslint -p . --fix"
+    }
+  }
+}

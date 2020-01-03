@@ -1,0 +1,55 @@
+<!-- 此文件是由模板文件 ".dtpl/component/$rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件 -->
+<view class="whole">
+  <missionDetail wx:if="{{showDetail}}" show.sync="{{showDetail}}" selectMission="{{selectMission}}" class="showUse" />
+  <view class='head'>
+    <image class='box1_left'src="{{userInfo.avatarUrl}}" />
+    <view class="box1_right">
+      <view class='text name'>{{userInfo.nickName}}</view>
+      <view class='text massagetip'>3000积分</view>
+    </view>
+  </view>
+  <view class="navigate">
+    <view class="{{giftBar.ALL == activeGiftBar ? 'tapstate' : 'nontapstate'}}" data-key="{{giftBar.ALL}}" bind:tap="switchGiftBar">
+      任务详情
+    </view>
+    <view class="{{giftBar.MY == activeGiftBar ? 'tapstate' : 'nontapstate'}}" data-key="{{giftBar.MY}}" bind:tap="switchGiftBar">
+      积分详情
+    </view>
+  </view>
+  <view class="allgift" wx:if="{{giftBar.ALL == activeGiftBar}}">
+    <view class="giftbar" wx:for="{{missions}}" wx:key="item.missionsCode" data-id="{{item.missionsCode}}" bind:tap="giftbarHandle">
+      <view class="giftbar_left">
+        <view class="touxiang"></view>
+        <view class="busiName">{{item.shop}}</view>
+      </view>
+      <view class="giftbar_center">
+        <view class="giftbar_center_up">{{item.name}}</view>
+        <view class="giftbar_center_down">截止时间 {{item.deadlineDate}} {{item.deadlineTime}}</view>
+      </view>
+      <view class="giftbar_right">
+        <view class="barright">
+          <view class="PTS">{{item.bonusPoint}}PTS</view>
+          <view class="fordetail">></view>
+        </view>
+        <view class="tag">{{item.status}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="myselfgift" wx:if="{{giftBar.MY == activeGiftBar}}">
+    <view class="pointsbar">
+      <view class="pointsbar_left useicon"></view>
+      <view class="pointsbar_center">使用 200PTS 兑换 星巴克咖啡抵用券</view>
+      <view class="pointsbar_right">2018/3/26 20:00</view>
+    </view>
+    <view class="pointsbar">
+      <view class="pointsbar_left rewardicon"></view>
+      <view class="pointsbar_center">完成 闪电侠 成就，获得200PTS</view>
+      <view class="pointsbar_right">2018/3/26 10:30</view>
+    </view>
+
+
+  </view>
+</view>

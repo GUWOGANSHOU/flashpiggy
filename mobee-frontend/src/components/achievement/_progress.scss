@@ -1,0 +1,116 @@
+// -- vars
+$bg-color: #fff;
+$default-size: 1em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+.pie.over-50 {
+  clip: rect(auto, auto, auto, auto) !important;
+
+  .right-side {
+    transform: rotate(180deg);
+    display: block;
+  }
+}
+
+.pie {
+  .right-side {
+    display: none;
+  }
+}
+
+.set-size {
+  font-size: 7.5em;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.pie-wrapper {
+  @include size($default-size, $default-size);
+  float: left;
+  margin: 0 auto;
+  position: relative;
+
+  &:nth-child(3n + 1) {
+    clear: both;
+  }
+
+  .half-circle {
+    @include size(100%, 100%);
+    // border: ($default-size / 10) solid #3498db;
+    border: ($default-size / 20) solid #5b7710;
+    box-sizing: border-box;
+    border-radius: 50%;
+    clip: rect(0, $default-size / 2, $default-size, 0);
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    transform: rotate(-135deg);
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .label {
+    background: $bg-color;
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: $label-font-size;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * 0.7;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+    overflow: hidden;
+  }
+
+  .label image {
+    width: 70%;
+    height: 70%;
+    margin-top: 25px;
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    // border: $default-size / 10 solid #878787;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    .half-circle {
+      border-color: #878787;
+    }
+
+    .left-side {
+      transform: rotate(270deg);
+    }
+
+    clip: rect(auto, auto, auto, auto);
+
+    .right-side {
+      transform: rotate(180deg);
+    }
+  }
+}

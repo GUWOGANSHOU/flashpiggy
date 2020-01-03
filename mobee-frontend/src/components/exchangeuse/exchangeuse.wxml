@@ -1,0 +1,81 @@
+<!-- 此文件是由模板文件 ".dtpl/component/$rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件 -->
+<view class="whole">
+  <view class="whitebg">
+    <view bind:tap="onBack" class="prerow"></view>
+    <view class="myselfgift">
+      <view class="giftbar2">
+        <view class="giftbar2_left">
+          <view class="touxiang"></view>
+        </view>
+        <view class="giftbar2_center">
+          <view class="giftbar2_center_up">￥{{useSelectGift.extendI1}}</view>
+          <view class="giftbar2_center_down">{{useSelectGift.name}}</view>
+        </view>
+        <!-- <view class="giftbar2_right">
+        <view class="giftbar2_right_up">
+         
+        </view>
+        <view class="giftbar2_right_down">
+         {{useSelectGift.deadlineDate}} {{useSelectGift.deadlineTime}}前有效
+         </view>
+      
+      </view> -->
+      </view>
+    </view>
+    <view class="QRcode">
+      <view class="QRleft">
+        <text class="leftnote">使用请</text>
+      </view>
+      <view class="QRcodeimg"></view>
+      <view class="QRright">
+        <text class="rightnote">出示二维码</text>
+      </view>
+    </view>
+    <view>
+      <view class="deadline">
+        <text class="hengxian">———</text>
+        <text class="deadTime">{{useSelectGift.endTime}}</text>
+        <text>前有效</text>
+        <text class="hengxian">———</text>
+      </view>
+    </view>
+    <view class="QRdetail">
+      <view class="firstDetail">
+        <view class="QRtab">
+          <view class="myIcon tabIcon"></view>
+          <view class="mynotice">
+            <text class="">{{useSelectGift.extendS1}}</text>
+            <!-- <text>{{useSelectGift.notice2}}</text> -->
+          </view>
+        </view>
+        <view class="QRshop">
+          <view class="myIcon shopIcon"></view>
+          <text class="">适用门店  {{useSelectGift.title}}</text>
+        </view>
+      </view>
+      <view class="secondDetail">
+        <view class="QRtime">
+          <view class="myIcon timeIcon"></view>
+          <view class="timeText">
+            <text class="">可用时段</text>
+            <text class="">{{useSelectGift.createTime}}</text>
+          </view>
+        </view>
+        <view class="QRnote">
+          <view class="myIcon noteIcon"></view>
+          <view class="noteText">
+            <text class="">抵用说明</text>
+            <text class="">{{useSelectGift.introduce}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="QRnote">请出示此二维码，以使用卡券</view> -->
+    <!-- <view class="GetGift">
+    使用
+  </view> -->
+  </view>
+</view>

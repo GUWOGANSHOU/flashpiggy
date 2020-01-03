@@ -1,0 +1,57 @@
+<!-- 此文件是由模板文件 ".dtpl/component/$rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件 -->
+<view class="mission-content flex flex-1">
+  <view bind:tap="onBack" class="prerow"></view>
+  <view class="mission-content-main flex-1">
+    <view class="mission-content-intro-cover">
+      <view class="giftbar">
+        <view class="giftbar_left">
+          <view class="touxiang"></view>
+          <view class="busiName">{{selectMission.shop}}</view>
+        </view>
+        <view class="giftbar_center">
+          <view class="giftbar_center_up">{{selectMission.name}}</view>
+          <view class="giftbar_center_down">截止时间 {{selectMission.endTime}}</view>
+        </view>
+        <view class="giftbar_right">
+          <view class="barright">
+            <view class="PTS">+{{selectMission.bonusPoints}}PTS</view>
+          </view>
+          <view class="tag">已完成</view>
+        </view>
+      </view>
+    </view>
+    <view class="mission-content-main-card mission-content-main-you-need">
+      <view class="mission-content-main-card-header">你只需：</view>
+      <view class="flex">
+        <view class="flex-1 flex">
+          <image src="images/location.png" class="flex-none" />
+          <view>{{selectMission.address}}</view> 
+          <view>（距离约 {{selectMission.distance}} 米）</view>
+        </view>
+      </view>
+      <view class="flex">
+        <image src="images/help.png" class="flex-none" />
+        <view class="flex-1">回答 {{selectMission.questions.length}} 个问题</view>
+      </view>
+      <view class="flex">
+        <image src="images/camera.png" class="flex-none" />
+        <view class="flex-1">拍摄照片6张</view>
+      </view>
+    </view>
+    <view class="mission-content-main-card">
+      <view class="mission-content-main-card-header">注意事项：</view>
+      <view>1.如任务途中遭遇意外情况,请首要保证自身安全,平台概不负责</view>
+      <view>2.您所有的信息,我们都会进行脱敏处理,并妥善保存</view>
+      <view>3.平台发布的所有任务真实有效,最终解释权归平台所有</view>
+      <view>4.如遇特殊情况,请务必主动联系客服</view>
+    </view>
+    <view class="mission-content-main-card">
+      <view class="mission-content-main-card-header">额外奖励：</view>
+      <view>1.仅前20完成任务者可获额外奖励100PTS</view>
+      <view>2.照片被采用的前三名额外奖励1000PTS</view>
+    </view>
+  </view>
+</view>

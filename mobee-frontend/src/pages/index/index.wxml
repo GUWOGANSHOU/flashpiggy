@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!userInfo && canIUseOpenButton}}" open-type="getUserInfo" bindgetuserinfo="onClickOpenButton"> 登录 Mobee </button>
+  </view>
+  <!-- <view class="usermotto">
+    <navigator url="/pages/home/home">跳转到Home</navigator>
+  </view> -->
+
+  <!-- <toast bind:close="hideToast" visible="{{toast}}" message="{{message}}" /> -->
+</view>

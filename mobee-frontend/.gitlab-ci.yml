@@ -1,0 +1,29 @@
+image: node:alpine
+
+stages:
+  - test
+  - build
+
+cache:
+  paths:
+  - node_modules
+  - .yarn
+
+test:
+  stage: test
+  before_script: 
+    - yarn config set cache-folder .yarn
+    - yarn install 
+  script:
+   - yarn lint
+
+build:
+  stage: build
+  before_script: 
+    - yarn config set cache-folder .yarn
+    - yarn install 
+  script:
+   - yarn build
+  artifacts:
+    paths:
+      - dist

@@ -1,0 +1,4 @@
+<view class="items">
+  <image class="items-img" src="{{isActive ? image.active : image.inactive}}" />
+  <text class="items-text {{isActive ? 'active' : ''}}">{{title}}</text>
+</view>

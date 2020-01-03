@@ -1,0 +1,371 @@
+<view class="view">
+  <map
+    longitude="119.1893578"
+    latitude="26.0571412"
+    show-location="{{true}}"
+    enable-rotate="{{true}}"
+    scale="18"
+    class="map"
+    markers="{{markers}}"
+    hidden="{{switchActive !== SWITCH.MAP}}"
+    bindmarkertap="missionTapHandler"
+  />
+
+  <cover-view class="status {{missionActiveContent && missionActiveStep ? '' : 'hidden-real'}}" bind:tap="landingMissionHandler">
+    <cover-view class="status-text">进行中的任务</cover-view>
+    <cover-image class="status-image" src="images/up-arrow.png" />
+  </cover-view>
+
+  <cover-view class="switch flex">
+    <cover-view
+      class="switch-map {{switchActive === SWITCH.MAP ? 'active' : ''}}"
+      bind:tap="setSwitchActive"
+      data-key="{{SWITCH.MAP}}"
+    >
+      地 图
+    </cover-view>
+    <cover-view
+      class="switch-list {{switchActive === SWITCH.LIST ? 'active' : ''}}"
+      bind:tap="setSwitchActive"
+      data-key="{{SWITCH.LIST}}"
+    >
+      列 表
+    </cover-view>
+  </cover-view>
+
+  <cover-view class="limit">任务额度 5 个</cover-view>
+  <cover-image bind:tap="testfunc" class="avatar" src="{{userInfo.avatarUrl || 'https://www.baidu.com/img/bd_logo1.png'}}" />
+
+  <view class="list flex" hidden="{{switchActive !== SWITCH.LIST}}">
+    <view class="list-top"></view>
+    <view class="list-switch">
+      <view
+        class="{{orderActive === ORDER.DISTANCE ? 'active' : ''}}"
+        bind:tap="setOrderActive"
+        data-key="{{ORDER.DISTANCE}}"
+      >
+        离我最近
+      </view>
+      <view
+        class="{{orderActive === ORDER.REWARD ? 'active' : ''}}"
+        bind:tap="setOrderActive"
+        data-key="{{ORDER.REWARD}}"
+      >
+        奖励最多
+      </view>
+    </view>
+    <view class="list-content">
+      <view class="list-item flex" wx:for="{{missions}}" wx:key="item.id" data-id="{{item.id}}" bind:tap="missionTapHandler">
+        <image class="list-item-avatar" src="{{item.avatar}}" />
+        <view class="list-item-desc flex">
+          <view class="list-item-desc-name">{{item.name}}</view>
+          <view class="list-item-desc-distance">距离 {{item.distance}}米</view>
+          <view class="list-item-desc-address">
+            <image class="list-item-desc-address-image" src="images/location.svg" />
+            {{item.address}}
+          </view>
+        </view>
+        <view class="list-item-reward">
+          <text>{{item.reward}} PTS</text>
+          <image class="list-item-reward-image" src="images/right-arrow.svg" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <cover-view class="mission flex" wx:if="{{missionActiveContent && missionActive && missionActiveStep === 0}}">
+    <cover-view class="mission-back" bind:tap="missionBackToMapHandler" />
+    <cover-view class="mission-content flex flex-1">
+      <cover-view class="mission-content-header flex" bind:tap="missionBackToMapHandler">
+        <cover-view>{{missionActiveContent.name}}</cover-view>
+        <cover-image class="mission-content-header-image" src="images/up-arrow.png" />
+      </cover-view>
+      <cover-view class="mission-content-main flex-1">
+        <cover-view class="mission-content-intro-cover">
+          <cover-image class="mission-content-intro-main-background" src="images/mission-content-intro.png" />
+          <cover-view class="mission-content-intro-main flex">
+            <cover-view class="flex-1">
+              <cover-view class="head">
+                <cover-view class="green people">{{missionActiveContent.completedPeopleCount}}/{{missionActiveContent.availablePeopleCount}} 人</cover-view>
+                <cover-view>完成任务</cover-view>
+              </cover-view>
+              <cover-view class="foot">
+                <cover-view>大约耗时</cover-view>
+                <cover-view class="green">{{missionActiveContent.timeConsuming}} 分钟</cover-view>
+              </cover-view>
+            </cover-view>
+            <cover-view class="mission-content-intro-avatar">
+              <cover-image class="img" src="{{missionActiveContent.avatar}}" />
+              <cover-view class="green">{{missionActiveContent.shop}}</cover-view>
+            </cover-view>
+            <cover-view class="mission-content-intro-right flex-1">
+              <cover-view class="head">
+                <cover-view class="time">{{missionActiveContent.deadlineDate}}</cover-view>
+                <cover-view class="time">{{missionActiveContent.deadlineTime}}</cover-view>
+                <cover-view>任务截止</cover-view>
+              </cover-view>
+              <cover-view class="foot">
+                <cover-view>任务奖励</cover-view>
+                <cover-view class="green">{{missionActiveContent.reward}}PTS</cover-view>
+              </cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="mission-content-main-card mission-content-main-you-need">
+          <cover-view class="mission-content-main-card-header">你只需：</cover-view>
+          <cover-view class="flex">
+            <cover-view class="flex-1 flex">
+              <cover-image src="images/location.png" class="flex-none" />
+              <cover-view>{{missionActiveContent.address}}</cover-view>
+            </cover-view>
+            <cover-view>（距离约 {{missionActiveContent.distance}} 米）</cover-view>
+          </cover-view>
+          <cover-view class="flex">
+            <cover-image src="images/help.png" class="flex-none" />
+            <cover-view class="flex-1">回答 {{questions.length}} 个问题</cover-view>
+          </cover-view>
+          <cover-view class="flex">
+            <cover-image src="images/camera.png" class="flex-none" />
+            <cover-view class="flex-1">拍摄照片 {{missionNeedPictures}} 张</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="mission-content-main-card">
+          <cover-view class="mission-content-main-card-header">注意事项：</cover-view>
+          <cover-view>1.如任务途中遭遇意外情况,请首要保证自身安全,平台概不负责</cover-view>
+          <cover-view>2.您所有的信息,我们都会进行脱敏处理,并妥善保存</cover-view>
+          <cover-view>3.平台发布的所有任务真实有效,最终解释权归平台所有</cover-view>
+          <cover-view>4.如遇特殊情况,请务必主动联系客服</cover-view>
+        </cover-view>
+        <cover-view class="mission-content-main-card">
+          <cover-view class="mission-content-main-card-header">额外奖励：</cover-view>
+          <cover-view>1.仅前20完成任务者可获额外奖励100PTS</cover-view>
+          <cover-view>2.照片被采用的前三名额外奖励1000PTS</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="mission-content-footer">
+        <cover-view class="mission-content-footer-button" data-key="{{1}}" bind:tap="setStepActive">
+          接受任务
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <cover-view class="mission flex" wx:if="{{missionActive && missionActiveStep === 1}}">
+    <cover-view class="mission-back" bind:tap="missionBackToMapHandler" />
+    <cover-view class="mission-content flex flex-1">
+      <cover-view class="mission-content-header flex" bind:tap="missionBackToMapHandler">
+        <cover-view>步骤1</cover-view>
+        <cover-image class="mission-content-header-image" src="images/up-arrow.png" />
+      </cover-view>
+      <cover-view class="mission-content-main flex-1 step-1">
+        <cover-view class="mission-step-card-large card-1">
+          <cover-image class="background" src="images/step-1/card-1.png" />
+          <cover-view class="logo">
+            <cover-image src="images/sign.png" />
+          </cover-view>
+          <cover-view class="flex-1">
+            <cover-view class="distance">距离</cover-view>
+            <cover-view class="distance-detail">{{missionActiveContent.distance}} 米</cover-view>
+            <cover-view>请到达指定位置，点击可打开导航</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="mission-step-card-large card-2">
+          <cover-image class="background" src="images/step-1/card-2.png" />
+          <cover-view class="logo">
+            <cover-image src="images/answer.png" />
+          </cover-view>
+          <cover-view class="flex-1">
+            <cover-view>回答 {{questions.length}} 道选择题</cover-view>
+            <cover-view class="mask" />
+            <cover-view class="mask" />
+          </cover-view>
+          <cover-view class="disable" />
+        </cover-view>
+        <cover-view class="mission-step-card-large card-3">
+          <cover-image class="background" src="images/step-1/card-3.png" />
+          <cover-view class="logo">
+            <cover-image src="images/camera-white.png" />
+          </cover-view>
+          <cover-view class="flex-1">
+            <cover-view>提供图片或扫描二维码</cover-view>
+            <cover-view class="mask" />
+            <cover-view class="mask" />
+          </cover-view>
+          <cover-view class="disable" />
+        </cover-view>
+      </cover-view>
+      <cover-view class="mission-content-footer step">
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{2}}"
+          bind:tap="setStepActive"
+        >
+          下一步
+        </cover-view>
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{0}}"
+          bind:tap="setStepActive"
+        >
+          放弃
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <cover-view class="mission flex" wx:if="{{missionActive && missionActiveStep === 2}}">
+    <cover-view class="mission-back" bind:tap="missionBackToMapHandler" />
+    <cover-view class="mission-content flex flex-1">
+      <cover-view class="mission-content-header flex" bind:tap="missionBackToMapHandler">
+        <cover-view>步骤2</cover-view>
+        <cover-image class="mission-content-header-image" src="images/up-arrow.png" />
+      </cover-view>
+      <cover-view class="mission-content-main flex-1 step-2">
+        <cover-view class="mission-step-card-small card-1">
+          <cover-image class="background" src="images/step-1/card-1-small.png" />
+          <cover-view class="logo">
+            <cover-image src="images/sign.png" />
+          </cover-view>
+          <cover-view class="flex-1">步骤1 已完成</cover-view>
+        </cover-view>
+        <cover-view class="mission-step-card-small card-2">
+          <cover-image class="background" src="images/step-1/card-2-small.png" />
+          <cover-view class="logo">
+            <cover-image src="images/answer.png" />
+          </cover-view>
+          <cover-view class="flex-1">完成 {{questions.length}} 道选择题</cover-view>
+        </cover-view>
+        <cover-view class="content flex-1">
+          <cover-view
+            wx:for="{{questions}}"
+            wx:for-item="item"
+            wx:for-index="index"
+            wx:key="index"
+            class="question"
+            style="transform: translateX(-{{(step2ActiveQuestion - 1) * 100}}%)"
+          >
+            <cover-view class="flex wrapper">
+              <cover-view class="flex-1 q-main">
+                <cover-view class="desc">单 {{index + 1}}：{{item.desc}}</cover-view>
+                <cover-view
+                  wx:for="{{item.answers}}"
+                  wx:for-item="answer"
+                  wx:for-index="answerIndex"
+                  wx:key="[index, answerIndex]"
+                  data-key="{{[index, answerIndex]}}"
+                  bind:tap="setStep2QestionSelected"
+                  class="q flex flex-col {{step2QestionSelected[index] === answerIndex ? 'active' : ''}}"
+                >
+                  <cover-view class="circle" />
+                  <cover-view>{{answer}}</cover-view>
+                </cover-view>
+              </cover-view>
+              <cover-view class="buttons flex">
+                <cover-view wx:if="{{index === 0}}" class="hidden2"></cover-view>
+                <cover-view
+                  bind:tap="setStep2ActiveQuestion"
+                  data-key="{{index}}"
+                  wx:else
+                >
+                  上一题
+                </cover-view>
+                <cover-view
+                  bind:tap="setStep2ActiveQuestion"
+                  data-key="{{index + 2}}"
+                  wx:if="{{index !== (questions.length - 1)}}"
+                >
+                  下一题
+                </cover-view>
+                <cover-view wx:else class="hidden2"></cover-view>
+              </cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="mission-content-footer step">
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{3}}"
+          bind:tap="setStepActive"
+        >
+          下一步
+        </cover-view>
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{0}}"
+          bind:tap="setStepActive"
+        >
+          放弃
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+  <cover-view class="mission flex" wx:if="{{missionActive && missionActiveStep === 3}}">
+    <cover-view class="mission-back" bind:tap="missionBackToMapHandler" />
+    <cover-view class="mission-content flex flex-1">
+      <cover-view class="mission-content-header flex" bind:tap="missionBackToMapHandler">
+        <cover-view>步骤3</cover-view>
+        <cover-image class="mission-content-header-image" src="images/up-arrow.png" />
+      </cover-view>
+      <cover-view class="mission-content-main flex-1 step-3">
+        <cover-view class="mission-step-card-small card-1">
+          <cover-image class="background" src="images/step-1/card-1-small.png" />
+          <cover-view class="logo">
+            <cover-image src="images/sign.png" />
+          </cover-view>
+          <cover-view class="flex-1">步骤1 已完成</cover-view>
+        </cover-view>
+        <cover-view class="mission-step-card-small card-2">
+          <cover-image class="background" src="images/step-1/card-2-small.png" />
+          <cover-view class="logo">
+            <cover-image src="images/answer.png" />
+          </cover-view>
+          <cover-view class="flex-1">步骤2 已完成</cover-view>
+        </cover-view>
+        <cover-view class="mission-step-card-small card-3">
+          <cover-image class="background" src="images/step-1/card-3-small.png" />
+          <cover-view class="logo">
+            <cover-image src="images/camera-white.png" />
+          </cover-view>
+          <cover-view class="flex-1">
+            <cover-view>提供图片或扫描二维码（{{missionNeedPictures}}张）</cover-view>
+            <cover-view class="black">（样式如左图）</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="content flex-1">
+          <cover-view
+            wx:for="{{needPictures}}"
+            wx:for-item="pic"
+            wx:for-index="picIndex"
+            wx:key="pic.id"
+            class="image-cover"
+          >
+            <cover-view class="desc">{{picIndex}}：{{pic.desc}} {{pic.count}} 张</cover-view>
+            <cover-view class="image-block">
+              <cover-view></cover-view>
+              <cover-view bind:tap="selectPictures">
+                <cover-view class="plus">+</cover-view>
+              </cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="mission-content-footer step">
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{0}}"
+          bind:tap="submitMission"
+        >
+          提交
+        </cover-view>
+        <cover-view
+          class="mission-content-footer-button"
+          data-key="{{0}}"
+          bind:tap="setStepActive"
+        >
+          放弃
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</view>
